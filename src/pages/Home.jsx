@@ -111,7 +111,7 @@ function Home() {
       <section className="mt-16 px-6 md:px-20">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-4xl md:text-5xl font-semibold text-gray-800">Types de catégories</h2>
-          {user?.name === 'Ursule' && user?.email === 'aizanonursule@gmail.com' && (
+          {user?.name === 'Ursule' && user?.email === 'aizannonursule@gmail.com' && (
             <button
               onClick={() => {
                 setSelectedCategory(null);

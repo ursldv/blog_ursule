@@ -10,8 +10,10 @@ function Articles() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
-  const [showModal, setShowModal] = useState(false); // ✅ état du modal
+  const [showModal, setShowModal] = useState(false);
+  const [user, setUser] = useState(null); // ✅ utilisateur connecté
 
+  // 🔄 Récupérer les articles
   const fetchArticles = async () => {
     try {
       const res = await api.get('/api/articles');
@@ -29,13 +31,24 @@ function Articles() {
     }
   };
 
+  // 🔄 Récupérer l’utilisateur connecté
+  const fetchUser = async () => {
+    try {
+      const res = await api.get('/api/user'); // Assure-toi que cette route est protégée et retourne l’utilisateur
+      setUser(res.data);
+    } catch (error) {
+      console.error('Erreur lors de la récupération de l’utilisateur', error);
+    }
+  };
+
   useEffect(() => {
     fetchArticles();
+    fetchUser();
   }, []);
 
   const handleSuccess = () => {
     fetchArticles();
-    setShowModal(false); // ✅ fermer le modal après ajout
+    setShowModal(false);
   };
 
   if (loading) return <Loader />;
@@ -49,18 +62,21 @@ function Articles() {
 
   return (
     <main className="min-h-screen mt-10 bg-gray-100 text-gray-900 px-20 py-10">
-      
-
       <div className="flex items-center justify-between mb-8 mt-5">
-        <h1 className="text-4xl font-bold mb-6 ">Tous les articles</h1>
-        <button
-          onClick={() => setShowModal(true)}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-        >
-          <FontAwesomeIcon icon={faPlus} />Ajouter un article
-        </button>
+        <h1 className="text-4xl font-bold mb-6">Tous les articles</h1>
+
+        {/* ✅ Bouton visible uniquement pour Ursule */}
+        {user?.name === 'Ursule' && user?.email === 'ursule@example.com' && (
+          <button
+            onClick={() => setShowModal(true)}
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+          >
+            <FontAwesomeIcon icon={faPlus} /> Ajouter un article
+          </button>
+        )}
       </div>
 
+      {/* ✅ Modal d’ajout */}
       {showModal && (
         <div className="fixed overflow-y-auto inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl relative">
@@ -75,6 +91,7 @@ function Articles() {
         </div>
       )}
 
+      {/* ✅ Liste des articles */}
       <ArticleList articles={articles} />
     </main>
   );
