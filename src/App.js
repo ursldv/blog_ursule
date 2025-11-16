@@ -6,6 +6,7 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ArticleDetails from "./pages/ArticleDetails";
+import Footer from "./pages/Footer";
 
 function App() {
   return (
@@ -17,8 +18,9 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:id" element={<ArticleDetails />} />
-        {/* <Route path="/contact" element={<Contact />} />  */}
+        <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
