@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "Bienvenue sur mon blog",
+    "excerpt": "Voici le premier article de démonstration.",
+    "category": "Général",
+    "date": "2025-11-10",
+    "image": "https://via.placeholder.com/600x300",
+    "url": "/articles/bienvenue"
+  },
+  {
+    "id": 2,
+    "title": "React pour les débutants",
+    "excerpt": "Apprenez les bases de React avec des exemples concrets.",
+    "category": "React",
+    "date": "2025-11-09",
+    "image": "https://via.placeholder.com/600x300",
+    "url": "/articles/react-debutant"
+  },
+  {
+    "id": 3,
+    "title": "Laravel côté backend",
+    "excerpt": "Comment structurer une API Laravel propre et maintenable.",
+    "category": "Laravel",
+    "date": "2025-11-08",
+    "image": "https://via.placeholder.com/600x300",
+    "url": "/articles/laravel-api"
+  }
+]

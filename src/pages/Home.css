@@ -1,0 +1,12 @@
+.home-header {
+  min-height: 100vh;
+  background-image: url('../images/bg-dark.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+}
