@@ -7,7 +7,7 @@ use App\Http\Controllers\Api\ArticleController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
-
+use App\Http\Controllers\Api\ContactController;
 
 // 🔐 Authenticated user route (optional)
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -27,3 +27,4 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 Route::apiResource('categories', CategoryController::class);
 Route::get('/articles/{article}/comments', [CommentController::class, 'index']);
+Route::post('/contact', [ContactController::class, 'store']);
