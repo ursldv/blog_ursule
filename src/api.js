@@ -2,14 +2,17 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  // In development we use src/setupProxy.js (calls the external API).
+  // In production on Vercel we default to the same-origin proxy at /api
+  baseURL: process.env.REACT_APP_API_URL || '/api',
   withCredentials: true,
   headers: {
     Accept: "application/json",
   },
 });
 
-console.log(process.env.REACT_APP_API_URL)
+// Helpful for debugging which base URL is used at runtime
+console.log('API baseURL:', process.env.REACT_APP_API_URL || '/api');
 
 // 🔁 Injecte automatiquement le token dans chaque requête
 api.interceptors.request.use((config) => {
