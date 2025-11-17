@@ -9,6 +9,8 @@ const api = axios.create({
   },
 });
 
+console.log(process.env.REACT_APP_API_URL)
+
 // 🔁 Injecte automatiquement le token dans chaque requête
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("authToken");
