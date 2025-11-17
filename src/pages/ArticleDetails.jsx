@@ -131,7 +131,13 @@ function ArticleDetails() {
           <CommentList articleId={article.id} />
         </div>
         <div className='md:mt-6'>
+        {user ? (
           <CommentForm articleId={article.id} onCommentAdded={fetchArticle} />
+        ) : (
+          <p className="text-gray-500 italic">
+            Connectez-vous pour ajouter un commentaire.
+          </p>
+        )}
         </div>
       </div>
 
